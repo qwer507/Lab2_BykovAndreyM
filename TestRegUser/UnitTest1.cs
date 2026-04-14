@@ -1,9 +1,9 @@
-namespace TestRegUser
+п»їnamespace TestRegUser
 {
     [TestFixture]
     public class MaskPasswordTests
     {
-        [TestCase("Ййуа1!")]
+        [TestCase("Р™Р№СѓР°1!")]
         public void ValidPassword(string password)
         {
             string result = ConsoleApp1.RegistrationNewUser.MaskPassword(password);
@@ -22,7 +22,7 @@ namespace TestRegUser
             Assert.That(result, Is.EqualTo("***"));
         }
 
-        [TestCase("Ййуа1!")]
+        [TestCase("Р™Р№СѓР°1!")]
         public void SamePassword(string password)
         {
             string hash1 = ConsoleApp1.RegistrationNewUser.MaskPassword(password);
@@ -31,7 +31,7 @@ namespace TestRegUser
             Assert.That(hash1, Is.EqualTo(hash2));
         }
 
-        [TestCase("Ййуа1!", "Йкцпм2!")]
+        [TestCase("Р™Р№СѓР°1!", "Р™РєС†РїРј2!")]
         public void DifferentPasswords(string password1, string password2)
         {
             string hash1 = ConsoleApp1.RegistrationNewUser.MaskPassword(password1);
@@ -48,55 +48,55 @@ namespace TestRegUser
         [TestCase("")]
         public void NullOrEmptyLogin(string? login)
         {
-            string password = "Айайуайуа1!";
-            string passwordRepeat = "Айайуайуа1!";
+            string password = "РђР№Р°Р№СѓР°Р№СѓР°1!";
+            string passwordRepeat = "РђР№Р°Р№СѓР°Р№СѓР°1!";
 
             string result = ConsoleApp1.RegistrationNewUser.RegisterUser(login, password, passwordRepeat)[1];
 
-            Assert.That(result, Is.EqualTo("Логин не может быть пустым."));
+            Assert.That(result, Is.EqualTo("Р›РѕРіРёРЅ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј."));
         }
 
         [TestCase("Arty")]
         public void ShortLogin(string login)
         {
-            string password = "Айайуайуа1!";
-            string passwordRepeat = "Айайуайуа1!";
+            string password = "РђР№Р°Р№СѓР°Р№СѓР°1!";
+            string passwordRepeat = "РђР№Р°Р№СѓР°Р№СѓР°1!";
 
             string result = ConsoleApp1.RegistrationNewUser.RegisterUser(login, password, passwordRepeat)[1];
 
-            Assert.That(result, Is.EqualTo("Логин должен содержать минимум 5 символов."));
+            Assert.That(result, Is.EqualTo("Р›РѕРіРёРЅ РґРѕР»Р¶РµРЅ СЃРѕРґРµСЂР¶Р°С‚СЊ РјРёРЅРёРјСѓРј 5 СЃРёРјРІРѕР»РѕРІ."));
         }
 
-        [TestCase("Русский")]
+        [TestCase("Р СѓСЃСЃРєРёР№")]
         [TestCase("aerwfefq@")]
         [TestCase("rwfrwf vrwvwrv")]
         public void LoginWithInvalidChars(string login)
         {
-            string password = "Айайуайуа1!";
-            string passwordRepeat = "Айайуайуа1!";
+            string password = "РђР№Р°Р№СѓР°Р№СѓР°1!";
+            string passwordRepeat = "РђР№Р°Р№СѓР°Р№СѓР°1!";
 
             string result = ConsoleApp1.RegistrationNewUser.RegisterUser(login, password, passwordRepeat)[1];
 
-            Assert.That(result, Is.EqualTo("Логин может содержать только латиницу, цифры и знак подчеркивания."));
+            Assert.That(result, Is.EqualTo("Р›РѕРіРёРЅ РјРѕР¶РµС‚ СЃРѕРґРµСЂР¶Р°С‚СЊ С‚РѕР»СЊРєРѕ Р»Р°С‚РёРЅРёС†Сѓ, С†РёС„СЂС‹ Рё Р·РЅР°Рє РїРѕРґС‡РµСЂРєРёРІР°РЅРёСЏ."));
         }
 
         [TestCase("admin")]
         public void ReservedLogin(string login)
         {
-            string password = "Айайуайуа1!";
-            string passwordRepeat = "Айайуайуа1!";
+            string password = "РђР№Р°Р№СѓР°Р№СѓР°1!";
+            string passwordRepeat = "РђР№Р°Р№СѓР°Р№СѓР°1!";
 
             string result = ConsoleApp1.RegistrationNewUser.RegisterUser(login, password, passwordRepeat)[1];
 
-            Assert.That(result, Is.EqualTo("Данный логин занят. Пожалуйста, выберите другой."));
+            Assert.That(result, Is.EqualTo("Р”Р°РЅРЅС‹Р№ Р»РѕРіРёРЅ Р·Р°РЅСЏС‚. РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІС‹Р±РµСЂРёС‚Рµ РґСЂСѓРіРѕР№."));
         }
 
         [TestCase("rgevberb@mail.ru")]
         [TestCase("rge123b@bk.ru")]
         public void ValidEmailLogin(string login)
         {
-            string password = "Айайуайуа1!";
-            string passwordRepeat = "Айайуайуа1!";
+            string password = "РђР№Р°Р№СѓР°Р№СѓР°1!";
+            string passwordRepeat = "РђР№Р°Р№СѓР°Р№СѓР°1!";
 
             string result = ConsoleApp1.RegistrationNewUser.RegisterUser(login, password, passwordRepeat)[1];
 
@@ -107,8 +107,8 @@ namespace TestRegUser
         [TestCase("+5-123-455-7531")]
         public void ValidPhoneLogin(string login)
         {
-            string password = "Айайуайуа1!";
-            string passwordRepeat = "Айайуайуа1!";
+            string password = "РђР№Р°Р№СѓР°Р№СѓР°1!";
+            string passwordRepeat = "РђР№Р°Р№СѓР°Р№СѓР°1!";
 
             string result = ConsoleApp1.RegistrationNewUser.RegisterUser(login, password, passwordRepeat)[1];
 
@@ -119,8 +119,8 @@ namespace TestRegUser
         [TestCase("Asdfghj")]
         public void ValidLogin(string login)
         {
-            string password = "Айайуайуа1!";
-            string passwordRepeat = "Айайуайуа1!";
+            string password = "РђР№Р°Р№СѓР°Р№СѓР°1!";
+            string passwordRepeat = "РђР№Р°Р№СѓР°Р№СѓР°1!";
 
             string result = ConsoleApp1.RegistrationNewUser.RegisterUser(login, password, passwordRepeat)[1];
 
@@ -139,81 +139,81 @@ namespace TestRegUser
 
             string result = ConsoleApp1.RegistrationNewUser.RegisterUser(login, password, password)[1];
 
-            Assert.That(result, Is.EqualTo("Пароль не может быть пустым."));
+            Assert.That(result, Is.EqualTo("РџР°СЂРѕР»СЊ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј."));
         }
 
-        [TestCase("кар")]
+        [TestCase("РєР°СЂ")]
         public void ShortPassword(string password)
         {
             string login = "Asdfghj";
 
             string result = ConsoleApp1.RegistrationNewUser.RegisterUser(login, password, password)[1];
 
-            Assert.That(result, Is.EqualTo("Пароль должен содержать минимум  7 символов."));
+            Assert.That(result, Is.EqualTo("РџР°СЂРѕР»СЊ РґРѕР»Р¶РµРЅ СЃРѕРґРµСЂР¶Р°С‚СЊ РјРёРЅРёРјСѓРј  7 СЃРёРјРІРѕР»РѕРІ."));
         }
 
         [TestCase("grtgwrgwwrg")]
-        [TestCase("капупкупу пеупукеп1!")]
+        [TestCase("РєР°РїСѓРїРєСѓРїСѓ РїРµСѓРїСѓРєРµРї1!")]
         public void PasswordWithInvalidChars(string password)
         {
             string login = "Asdfghj";
 
             string result = ConsoleApp1.RegistrationNewUser.RegisterUser(login, password, password)[1];
 
-            Assert.That(result, Is.EqualTo("Пароль может содержать только кириллицу, цифры и спецсимволы."));
+            Assert.That(result, Is.EqualTo("РџР°СЂРѕР»СЊ РјРѕР¶РµС‚ СЃРѕРґРµСЂР¶Р°С‚СЊ С‚РѕР»СЊРєРѕ РєРёСЂРёР»Р»РёС†Сѓ, С†РёС„СЂС‹ Рё СЃРїРµС†СЃРёРјРІРѕР»С‹."));
         }
 
-        [TestCase("пуепруеруер1!")]
+        [TestCase("РїСѓРµРїСЂСѓРµСЂСѓРµСЂ1!")]
         public void PasswordNoUpperCase(string password)
         {
             string login = "Asdfghj";
 
             string result = ConsoleApp1.RegistrationNewUser.RegisterUser(login, password, password)[1];
 
-            Assert.That(result, Is.EqualTo("Пароль должен содержать минимум одну букву в верхнем регистре."));
+            Assert.That(result, Is.EqualTo("РџР°СЂРѕР»СЊ РґРѕР»Р¶РµРЅ СЃРѕРґРµСЂР¶Р°С‚СЊ РјРёРЅРёРјСѓРј РѕРґРЅСѓ Р±СѓРєРІСѓ РІ РІРµСЂС…РЅРµРј СЂРµРіРёСЃС‚СЂРµ."));
         }
 
-        [TestCase("АКАПЦПЦКП1!")]
+        [TestCase("РђРљРђРџР¦РџР¦РљРџ1!")]
         public void PasswordNoLowerCase(string password)
         {
             string login = "Asdfghj";
 
             string result = ConsoleApp1.RegistrationNewUser.RegisterUser(login, password, password)[1];
 
-            Assert.That(result, Is.EqualTo("Пароль должен содержать минимум одну букву в нижнем регистре."));
+            Assert.That(result, Is.EqualTo("РџР°СЂРѕР»СЊ РґРѕР»Р¶РµРЅ СЃРѕРґРµСЂР¶Р°С‚СЊ РјРёРЅРёРјСѓРј РѕРґРЅСѓ Р±СѓРєРІСѓ РІ РЅРёР¶РЅРµРј СЂРµРіРёСЃС‚СЂРµ."));
         }
 
-        [TestCase("Йуайуайуайу!")]
+        [TestCase("Р™СѓР°Р№СѓР°Р№СѓР°Р№Сѓ!")]
         public void PasswordNoDigit(string password)
         {
             string login = "Asdfghj";
 
             string result = ConsoleApp1.RegistrationNewUser.RegisterUser(login, password, password)[1];
 
-            Assert.That(result, Is.EqualTo("Пароль должен содержать минимум одну цифру."));
+            Assert.That(result, Is.EqualTo("РџР°СЂРѕР»СЊ РґРѕР»Р¶РµРЅ СЃРѕРґРµСЂР¶Р°С‚СЊ РјРёРЅРёРјСѓРј РѕРґРЅСѓ С†РёС„СЂСѓ."));
         }
 
-        [TestCase("Йуайуайуайуа1")]
+        [TestCase("Р™СѓР°Р№СѓР°Р№СѓР°Р№СѓР°1")]
         public void PasswordNoSpecialSymbol(string password)
         {
             string login = "Asdfghj";
 
             string result = ConsoleApp1.RegistrationNewUser.RegisterUser(login, password, password)[1];
 
-            Assert.That(result, Is.EqualTo("Пароль должен содержать минимум один спецсимвол."));
+            Assert.That(result, Is.EqualTo("РџР°СЂРѕР»СЊ РґРѕР»Р¶РµРЅ СЃРѕРґРµСЂР¶Р°С‚СЊ РјРёРЅРёРјСѓРј РѕРґРёРЅ СЃРїРµС†СЃРёРјРІРѕР»."));
         }
 
-        [TestCase("Ячсячмячм1!", "Кацацкацк1!")]
+        [TestCase("РЇС‡СЃСЏС‡РјСЏС‡Рј1!", "РљР°С†Р°С†РєР°С†Рє1!")]
         public void DifferentPasswords(string password1, string password2)
         {
             string login = "Asdfghj";
 
             string result = ConsoleApp1.RegistrationNewUser.RegisterUser(login, password1, password2)[1];
 
-            Assert.That(result, Is.EqualTo("Введены разные пароли."));
+            Assert.That(result, Is.EqualTo("Р’РІРµРґРµРЅС‹ СЂР°Р·РЅС‹Рµ РїР°СЂРѕР»Рё."));
         }
 
-        [TestCase("Ячсячмячм1!")]
+        [TestCase("РЇС‡СЃСЏС‡РјСЏС‡Рј1!")]
         public void CorrectPassword(string password)
         {
             string login = "Asdfghj";
